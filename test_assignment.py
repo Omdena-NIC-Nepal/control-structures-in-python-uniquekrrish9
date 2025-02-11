@@ -1,7 +1,7 @@
 import io
 import sys
 import pytest
-import assignment  # Assumes the student's solution is in assignment.py
+#import assignment # Assumes the student's solution is in assignment.py
 
 import nbconvert
 import io
@@ -32,7 +32,7 @@ def import_notebook_module(notebook_path):
 # Then use in tests
 assignment = import_notebook_module('assignment.ipynb')
 
-def test_while_loop_even_numbers(capsys):
+def test_while_loop_even_numbers(capsys: pytest.CaptureFixture[str]):
     """Test the while loop for printing even numbers up to 16"""
     assignment.while_loop()
     captured = capsys.readouterr().out.strip().split('\n')
@@ -44,7 +44,7 @@ def test_while_loop_even_numbers(capsys):
     for actual, expect in zip(captured, expected):
         assert actual.strip() == expect, f"Expected {expect}, got {actual}"
 
-def test_for_loop_skip_divisible_by_3(capsys):
+def test_for_loop_skip_divisible_by_3(capsys: pytest.CaptureFixture[str]):
     """Test for loop that skips numbers divisible by 3"""
     assignment.for_loop_continue()
     captured = capsys.readouterr().out.strip().split('\n')
@@ -82,8 +82,8 @@ def test_number_classification():
     assert "negative" in test_input(-5).lower(), "Failed to identify negative number"
     assert "positive" in test_input(10).lower(), "Failed to identify positive number"
     assert "zero" in test_input(0).lower(), "Failed to identify zero"
-
-def test_multiplication_table(capsys):
+        
+def test_multiplication_table(capsys: pytest.CaptureFixture[str]):
     """Test nested loops multiplication table"""
     assignment.multiplication_table()
     captured = capsys.readouterr().out.strip().split('\n')

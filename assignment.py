@@ -1,10 +1,15 @@
+
 # Task 1: while loop
 def while_loop():
     number = 0
     while number <= 20:
-        if number % 3 == 0:
+        if number % 2 == 0:
             print(number)
+        if number == 16:
+            break
         number += 1
+while_loop()
+
 
 # Task 2: For loop with continue
 def for_loop_continue():
@@ -12,21 +17,31 @@ def for_loop_continue():
         if num % 3 == 0:
             continue
         print(num)
+for_loop_continue()
+
 
 # Task 3: if-else statement
-def number_classification():
-    number = int(input("Enter a number: "))
 
-    if number > 0:
-        print("positive")
-    elif number < 0:
+import sys
+def number_classification():
+    try:
+        n = int(sys.stdin.readline().strip())  # Use readline() instead of read()
+    except ValueError:
+        n = 0  # Default value if no input is provided
+    
+    if n < 0:
         print("negative")
-    else:
+    elif n == 0:
         print("zero")
+    else:
+        print("positive")
+
+
+
 
 # Task 4: Nested loops
 def multiplication_table():
-    for i in range(1, 6):  # Outer loop (rows)
-        for j in range(1, 6):  # Inner loop (columns)
-            print(f"{i} x {j} = {i * j}")  # Print multiplication result
-        print() 
+    for i in range(1, 6):
+        for j in range(1, 6):
+            print(f"{i} x {j} = {i * j}")
+multiplication_table()
